@@ -1,4 +1,4 @@
-/*
+
 CREATE DATABASE cursophp(
 	nome VARCHAR(200)
 );
@@ -131,4 +131,4 @@ DELETE FROM itens WHERE nome = "teste";
 CREATE USER 'eriton'@'localhost' IDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON *.* TO 'eriton'@'localhost';
 FLUSH PRIVILEGES;
-*/
+
