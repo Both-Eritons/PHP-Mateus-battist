@@ -38,12 +38,13 @@ if($type === "update"){
 
 		$image = $_FILES["image"];
 		//tipos de dados permitidos para upload
-		$imagetypes = ["image/jpeg", "image/jpg", "image/png"];
-		$jpgArray = ["image/jpeg", "image/jpg"];
+		$imagetypes = ["image/jpeg", "image/png"];
+		$jpgArray = ["image/jpeg"];
 
 
 		//checagem do tipo
 		if(in_array($image["type"], $imagetypes)){
+			//var_dump($image); die();
 			// Verificar se é jpg
 			if(in_array($image, $jpgArray)){
 
@@ -73,7 +74,28 @@ if($type === "update"){
 }
 //atualizar senha de usuario
 else if($type === "changepassword"){
+	$password = filter_input(INPUT_POST, "password");
+	$confirmpassword = filter_input(INPUT_POST, "confirmpassword");
+	$userData = $userDAO->verifyToken();
+	$id = $userData->id;
 
-}else{
+	if($password === $confirmpassword){
+
+		$user = new User();
+
+		$finalPassword = $user->generatePassword($password);
+
+		$user->password = $finalPassword;
+		$user->id = $id;
+
+		$userDAO->changePassword($user);
+
+	} 
+	else
+	{
+		$message->setMessage("as senhas tem que ser iguais!", "error", "back");
+	}
+}
+else{
 	$message->setMessage("informações inválidas!", "error", "index.php");
 }	

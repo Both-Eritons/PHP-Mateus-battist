@@ -173,5 +173,12 @@ class UserDAO implements UserDAOInterface{
 		//redireciona e apresenta msg de sucesso!
 		$this->message->setMessage("você fez logout com sucesso!", "success", "index.php");
 	}
-	public function changePassword(User $user){}
+	public function changePassword(User $user){
+		$stmt = $this->conn->prepare("UPDATE users SET password = :password WHERE id = :id");
+		$stmt->bindValue(":password", $user->password);
+		$stmt->bindValue(":id", $user->id);
+		$stmt->execute();
+
+		$this->message->setMessage("você mudou sua senha!", "success", "editprofile.php");
+	}
 }

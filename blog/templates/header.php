@@ -10,7 +10,7 @@ include_once("data/categories.php");
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Blog Codar</title>
 	<link  rel="stylesheet" href="<?=$BASE_URL?>css/reset.css" />
-	<link  rel="stylesheet" href="<?=$BASE_URL?>css/style.css" />
+	<link  rel="stylesheet" href="css/style.css" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
